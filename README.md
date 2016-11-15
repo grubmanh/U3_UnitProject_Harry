@@ -31,8 +31,7 @@
 </p>
 
 <div>
-  <h3>Milestone #3: December 6th, 2016 (For G block)</br>
-  Milestone #3: December 5th, 2015 (For C block) </h3>
+  <h3>Milestone #3: December 5th, 2015</h3>
   <strong>Goal:</strong> You should have iterated and improved on your prototype by the end of this milestone.
   <ul>
     <li>Task</li>
@@ -44,6 +43,5 @@
 </div>
 
 <div>
-  <h3><strong>Presentation:</strong> December 8th, 2016 (For G block)</br>
-  <strong>Presentation:</strong> December 7th, 2015 (For C block) </h3>
+  <h3><strong>Presentation:</strong> December 7th, 2015</h3>
 </div>
