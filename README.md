@@ -40,3 +40,14 @@
 <div>
   <h3><strong>Presentation:</strong> December 7th, 2015</h3>
 </div>
+
+<h2>Rooms</h2>
+
+<div>
+  <ul>
+    <li>Jail Cell - posters on wall</li>
+    <li>Space Ship - sensor values</li>
+    <li>Closed Store - details on window</li>
+    <li>GOD MODE - numbers, shapes, and memory</li>
+  </ul>
+</div>
