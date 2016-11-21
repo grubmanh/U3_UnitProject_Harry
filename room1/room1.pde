@@ -3,6 +3,7 @@ import processing.net.*;
 Client c;
 String input;
 int data[];
+String stage = "initialize";
 
 void setup()
 {
@@ -17,6 +18,6 @@ void draw()
   {
     input = c.readString();
     input = input.substring(0, input.indexOf("\n"));
-    data = int(split(input, ' '));
+    data = int(split(input, '|'));
   }
 }

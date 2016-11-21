@@ -1,0 +1,18 @@
+data[0] = identifier
+	Server - 0
+	Master - 1
+	Room 1 - 2
+	Room 2 - 3
+
+data[1] = status
+	0 - unavailable
+	1 - available
+
+data[2] = stage
+	Server && Master = 0
+	Room 1 && Room 2 = 1 - 499
+
+data[3] = code || force
+	Server = 0
+	Master = force code (_ _ _ _)
+	Room 1 & Room 2 = Entered Code (_ _ _ _)
