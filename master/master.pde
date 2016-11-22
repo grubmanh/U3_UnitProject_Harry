@@ -1,19 +1,27 @@
 import processing.net.*;
+PImage exo;
 
 Client c;
 String input;
 int data[];
+String serverStatus = "NO CONN.";
+String masterStatus = "NO CONN.";
+String room1Status = "NO CONN.";
+String room2Status = "NO CONN.";
 
 void setup()
 {
   frameRate(5);
   c = new Client(this, "127.0.0.1", 12345);
+  exo = loadImage("Exo_Logo.png");
+  masterStatus = "CONNECTED";
   size(1280, 690);
   background(0);
 }
 
 void draw()
 {
+  background(0);
   masterLayout();
    //c.write(); // to write
   if (c.available() > 0)
@@ -21,7 +29,21 @@ void draw()
     input = c.readString();
     input = input.substring(0, input.indexOf("\n"));
     data = int(split(input, '|'));
-    
+    if (data[0] == 0) // script from server
+    {
+      if (data[1] == 1) // server is available
+      serverStatus = "CONNECTED";
+    }
+    if (data[0] == 2) // script from room1
+    {
+      if (data[1] == 1) // room1 is available
+      serverStatus = "CONNECTED";
+    }
+    if (data[0] == 3) // script from room1
+    {
+      if (data[1] == 1) // room1 is available
+      serverStatus = "CONNECTED";
+    }
   }
 }
 
@@ -38,8 +60,13 @@ void masterLayout()
   line(4*width/12, 20, width, 20);
   textAlign(CENTER, CENTER);
   text("SERV", 9*width/24, 10);
+  text(serverStatus, 9*width/24, 60);
   text("MAST", 11*width/24, 10);
+  text(masterStatus, 11*width/24, 60);
   text("RM_1", 13*width/24, 10);
+  text(room1Status, 13*width/24, 60);
   text("RM_2", 15*width/24, 10);
+  text(room2Status, 15*width/24, 60);
   text("TIME", 20*width/24, 10);
+  image(exo, width/12, 0, 200, 100);
 }
