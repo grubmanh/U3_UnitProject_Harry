@@ -1,3 +1,47 @@
+Room Sample -
+Room 1 -
+	Matrix with Next Row Multiplication
+	12 | 13 | 128
+	7 | 4 | 156
+	16 | *sp* | 28
+	Explanation: 	12*13 = 156
+			7 * 4 = 28
+			16* 8 = 128
+
+	Inspirational Poster with Missing Letters
+	<inspirational_picture>
+	In times of great need, the world
+	pul*tri*s togeth*cir*r as one.
+		|*tri*-*cir*| *hea*
+	Explanation: 	Completes number values with
+			missing letters available on
+			chart in room 2.
+	
+	Letter with Year Clue
+	Jan 4, 1919.
+	My sweetheart,
+
+	It’s been *dia* years since we’ve seen
+	each other...
+	
+	- Verano Gionese
+	Explanation: 	Painting in room 1 has the 
+			year 1915 on it, the last
+			time he saw his sweetheart.
+
+Room 2 - 
+	Picture of Sweetheart
+	<Picture_Verano_and_Sweetheart>
+	Picture has -VG and Year stamped
+
+	Maze with Numbers
+	*clo* at top left, maze ends at a number
+
+	Key of Letters
+	To be used in conjunction with Inspirational
+	Poster, provides number values to feed back.		
+
+
 data[0] = identifier
 	Server - 0
 	Master - 1
@@ -16,3 +60,6 @@ data[3] = code || force
 	Server = 0
 	Master = force code (_ _ _ _)
 	Room 1 & Room 2 = Entered Code (_ _ _ _)
+
+	Force Codes
+	reset - reset all

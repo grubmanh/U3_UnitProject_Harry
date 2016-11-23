@@ -3,11 +3,13 @@ PImage exo;
 
 Client c;
 String input;
+String console = "con";
 int data[];
 String serverStatus = "NO CONN.";
 String masterStatus = "NO CONN.";
 String room1Status = "NO CONN.";
 String room2Status = "NO CONN.";
+//char 
 
 void setup()
 {
@@ -58,6 +60,7 @@ void masterLayout()
   line(7*width/12, 0, 7*width/12, 100);
   line(8*width/12, 0, 8*width/12, 100);
   line(4*width/12, 20, width, 20);
+  line(3*width/4, height-200, 3*width/4, height);
   textAlign(CENTER, CENTER);
   text("SERV", 9*width/24, 10);
   text(serverStatus, 9*width/24, 60);
@@ -69,4 +72,24 @@ void masterLayout()
   text(room2Status, 15*width/24, 60);
   text("TIME", 20*width/24, 10);
   image(exo, width/12, 0, 200, 100);
+  text(console, 3*width/4, height-100);
+}
+
+void keyPressed() // Adapted from Amnon.p5
+{
+  if (keyCode == BACKSPACE)
+  {
+    if (console.length() > 0)
+    {
+      console = console.substring(0, console.length()-1);
+    }
+  }
+  else if (keyCode == DELETE)
+  {
+    console = "";
+  }
+  else if (keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT && console.length() < 7)
+  {
+    console = console + key;
+  }
 }
