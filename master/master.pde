@@ -9,7 +9,8 @@ String serverStatus = "NO CONN.";
 String masterStatus = "NO CONN.";
 String room1Status = "NO CONN.";
 String room2Status = "NO CONN.";
-//char 
+int rm1_code = 1234;
+int rm2_code = 1234;
 
 void setup()
 {
@@ -29,7 +30,13 @@ void draw()
   if (c.available() > 0)
   {
     input = c.readString();
-    input = input.substring(0, input.indexOf("\n"));
+    int i = input.indexOf('\n');
+    println(i);
+    if(i != -1)
+    {
+      input = input.substring(0, i);
+      println(input);
+    }
     data = int(split(input, '|'));
     if (data[0] == 0) // script from server
     {
@@ -39,18 +46,23 @@ void draw()
     if (data[0] == 2) // script from room1
     {
       if (data[1] == 1) // room1 is available
-      serverStatus = "CONNECTED";
+      room1Status = "CONNECTED";
+      if (data[2] == 1) // room is rooming
+        rm1_code = data[3];
     }
-    if (data[0] == 3) // script from room1
+    if (data[0] == 3) // script from room2
     {
-      if (data[1] == 1) // room1 is available
-      serverStatus = "CONNECTED";
+      if (data[1] == 1) // room2 is available
+      room2Status = "CONNECTED";
+      if (data[2] == 1) // room is rooming
+        rm2_code = data[3];
     }
   }
 }
 
 void masterLayout()
 {
+  textSize(15);
   stroke(255);
   line(0, 100, width, 100);
   line(0, height-200, width, height-200);
@@ -61,6 +73,10 @@ void masterLayout()
   line(8*width/12, 0, 8*width/12, 100);
   line(4*width/12, 20, width, 20);
   line(3*width/4, height-200, 3*width/4, height);
+  line(0, height-170, 3*width/4, height-170);
+  line(3*width/8, height-170, 3*width/8, height);
+  text("RM_1 CODE", 3*width/16, height-185);
+  text("RM_2 CODE", 9*width/16, height-185);
   textAlign(CENTER, CENTER);
   text("SERV", 9*width/24, 10);
   text(serverStatus, 9*width/24, 60);
@@ -73,6 +89,9 @@ void masterLayout()
   text("TIME", 20*width/24, 10);
   image(exo, width/12, 0, 200, 100);
   text(console, 3*width/4, height-100);
+  textSize(100);
+  text(rm1_code, 3*width/16, height-93);
+  text(rm2_code, 9*width/16, height-93);
 }
 
 void keyPressed() // Adapted from Amnon.p5

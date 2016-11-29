@@ -55,6 +55,10 @@ data[1] = status
 data[2] = stage
 	Server && Master = 0
 	Room 1 && Room 2 = 1 - 499
+	Stages
+	0 - initialization
+	1 - logo running
+	2 - rooming
 
 data[3] = code || force
 	Server = 0
@@ -62,4 +66,5 @@ data[3] = code || force
 	Room 1 & Room 2 = Entered Code (_ _ _ _)
 
 	Force Codes
-	reset - reset all
+	9999 reset - reset all
+	1234 start - start game

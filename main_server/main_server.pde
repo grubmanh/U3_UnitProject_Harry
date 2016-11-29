@@ -17,8 +17,14 @@ void draw()
   if (c != null) 
   {
     input = c.readString();
-    input = input.substring(0, input.indexOf("\n"));
+    int i = input.indexOf('\n');
+    if(i != -1)
+    {
+      input = input.substring(0, i);
+      main_server.write(input);
+    }
     data = int(split(input, '|'));
+    println(input);
   }
   main_server.write("0|1|0\n"); // running code for server
 }
