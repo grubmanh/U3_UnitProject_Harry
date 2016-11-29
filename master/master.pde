@@ -73,10 +73,11 @@ void masterLayout()
   line(8*width/12, 0, 8*width/12, 100);
   line(4*width/12, 20, width, 20);
   line(3*width/4, height-200, 3*width/4, height);
-  line(0, height-170, 3*width/4, height-170);
+  line(0, height-170, width, height-170);
   line(3*width/8, height-170, 3*width/8, height);
   text("RM_1 CODE", 3*width/16, height-185);
   text("RM_2 CODE", 9*width/16, height-185);
+  text("CONSOLE", 14*width/16, height-185);
   textAlign(CENTER, CENTER);
   text("SERV", 9*width/24, 10);
   text(serverStatus, 9*width/24, 60);
