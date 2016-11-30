@@ -12,7 +12,7 @@ String room2Status = "NO CONN.";
 int rm1_code = 1234;
 int rm2_code = 1234;
 int forceCode = 0000;
-//String executionName;
+String executionName = "";
 
 void setup()
 {
@@ -28,9 +28,18 @@ void draw()
 {
   background(0);
   masterLayout();
+  println(millis());
+  println(forceCode);
   if (forceCode != 0000)
   {
   consoleApp(forceCode);
+  forceCode = 0000;
+  }
+  if (executionName != "")
+  {
+    int ts = millis();
+    if (millis() > (ts + 6000))
+    executionName = "";
   }
    //c.write(); // to write
   if (c.available() > 0)
@@ -96,11 +105,12 @@ void masterLayout()
   text("TIME", 20*width/24, 10);
   image(exo, width/12, 0, 200, 100);
   text(console, 7*width/8, height-100);
+  textSize(50);
+  text(executionName, 7*width/8, height-100);
   textSize(100);
   text(rm1_code, 3*width/16, height-93);
   text(rm2_code, 9*width/16, height-93);
 }
-
 void keyPressed() // Adapted from Amnon.p5
 {
   if (keyCode == RETURN || keyCode == ENTER)
@@ -127,7 +137,24 @@ void keyPressed() // Adapted from Amnon.p5
 
 void consoleApp(int forceCode)
 {
-  c.write("1|1|0|" + forceCode + "\n");
-  forceCode = 0000;
-  
+  println("ConsoleApp called");
+  //c.write("1|1|0|" + forceCode + "\n");
+  switch(forceCode) 
+  {
+  case 9999: 
+    executionName = "Reset All";
+    break;
+  case 1234: 
+    executionName = "Start Game";
+    break;
+  case 4321:
+    executionName = "Stop Game";
+    break;
+  case 3223:
+    executionName = "Pause Game";
+    break;
+  case 5555:
+    executionName = "Technical Difficulty";
+    break;
+  }
 }
