@@ -66,6 +66,7 @@ data[3] = code || force
 	Room 1 & Room 2 = Entered Code (_ _ _ _)
 
 	Force Codes
+	0000 blank - force code not entered
 	9999 reset - reset all
 	1234 start - start game
 	4321 stop - stops game

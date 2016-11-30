@@ -11,6 +11,8 @@ String room1Status = "NO CONN.";
 String room2Status = "NO CONN.";
 int rm1_code = 1234;
 int rm2_code = 1234;
+int forceCode = 0000;
+//String executionName;
 
 void setup()
 {
@@ -26,6 +28,10 @@ void draw()
 {
   background(0);
   masterLayout();
+  if (forceCode != 0000)
+  {
+  consoleApp(forceCode);
+  }
    //c.write(); // to write
   if (c.available() > 0)
   {
@@ -89,7 +95,7 @@ void masterLayout()
   text(room2Status, 15*width/24, 60);
   text("TIME", 20*width/24, 10);
   image(exo, width/12, 0, 200, 100);
-  text(console, 3*width/4, height-100);
+  text(console, 7*width/8, height-100);
   textSize(100);
   text(rm1_code, 3*width/16, height-93);
   text(rm2_code, 9*width/16, height-93);
@@ -97,6 +103,11 @@ void masterLayout()
 
 void keyPressed() // Adapted from Amnon.p5
 {
+  if (keyCode == RETURN || keyCode == ENTER)
+  {
+    forceCode = int(console);
+    console = "";
+  }
   if (keyCode == BACKSPACE)
   {
     if (console.length() > 0)
@@ -108,8 +119,15 @@ void keyPressed() // Adapted from Amnon.p5
   {
     console = "";
   }
-  else if (keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT && console.length() < 7)
+  else if (keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT && console.length() < 5)
   {
     console = console + key;
   }
+}
+
+void consoleApp(int forceCode)
+{
+  c.write("1|1|0|" + forceCode + "\n");
+  forceCode = 0000;
+  
 }
