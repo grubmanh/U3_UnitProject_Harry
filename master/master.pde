@@ -13,6 +13,12 @@ int rm1_code = 1234;
 int rm2_code = 1234;
 int forceCode = 0000;
 String executionName = "";
+int startTime;
+Boolean oneTime = false;
+String time = "00:00:00";
+int hours = 1;
+int minutes = 1;
+int seconds = 10;
 
 void setup()
 {
@@ -28,6 +34,10 @@ void draw()
 {
   background(0);
   masterLayout();
+  if (millis() % 10000 == 0);
+  {
+  timer();
+  }
   println(millis());
   println(forceCode);
   if (forceCode != 0000)
@@ -73,6 +83,16 @@ void draw()
         rm2_code = data[3];
     }
   }
+  if (oneTime == false && executionName != "")
+  {
+    startTime = millis();
+    oneTime = true;
+  }
+  if ((millis() - startTime) > 1000)
+  {
+    executionName = "";
+    oneTime = false;
+  }
 }
 
 void masterLayout()
@@ -102,10 +122,11 @@ void masterLayout()
   text(room1Status, 13*width/24, 60);
   text("RM_2", 15*width/24, 10);
   text(room2Status, 15*width/24, 60);
-  text("TIME", 20*width/24, 10);
+  text("TIME", 10*width/12, 10);
   image(exo, width/12, 0, 200, 100);
   text(console, 7*width/8, height-100);
   textSize(50);
+  text(time, 10*width/12, 60);
   text(executionName, 7*width/8, height-100);
   textSize(100);
   text(rm1_code, 3*width/16, height-93);
@@ -157,4 +178,25 @@ void consoleApp(int forceCode)
     executionName = "Technical Difficulty";
     break;
   }
+}
+
+void timer()
+{
+  if (minutes > 0 && seconds == 0)
+  {
+    minutes --;
+    seconds += 59;
+  }
+  if (hours > 0 && minutes == 0 && seconds == 0)
+  {
+    hours --;
+    minutes += 59;
+    seconds += 59;
+  }
+  if (seconds > 0)
+  {
+    seconds --;
+  }
+  time = hours + ":" + minutes + ":" + seconds;
+  
 }
