@@ -1,4 +1,4 @@
-<h1>Unit 3 Final Project: EXO (Working Title)</h1>
+<h1>Unit 3 Final Project: EXO</h1>
 
 <strong>Interaction</strong>: Members of the game, once they are in the room, will interact with a mini numpad on a podium placed somewhere in the room. They will be watching a screen projected onto at least one of the walls. They will be talking to their team-mate through a microphone, and listening to their team-mate through a speaker.
 
