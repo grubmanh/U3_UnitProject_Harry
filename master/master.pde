@@ -19,6 +19,7 @@ String time = "00:00:00";
 int hours = 1;
 int minutes = 1;
 int seconds = 10;
+Boolean timerPaused = false;
 
 void setup()
 {
@@ -186,12 +187,14 @@ void consoleApp(int forceCode)
     break;
   case 1234: 
     executionName = "Start Game";
+    timerPaused = false;
     break;
   case 4321:
     executionName = "Stop Game";
     break;
   case 3223:
     executionName = "Pause Game";
+    timerPaused = true;
     break;
   case 5555:
     executionName = "Technical Difficulty";
@@ -201,21 +204,23 @@ void consoleApp(int forceCode)
 
 void timer()
 {
-  if (minutes > 0 && seconds == 0)
+  if (timerPaused == false)
   {
-    minutes --;
-    seconds += 59;
+    if (minutes > 0 && seconds == 0)
+    {
+      minutes --;
+      seconds += 59;
+    }
+    if (hours > 0 && minutes == 0 && seconds == 0)
+    {
+      hours --;
+      minutes += 59;
+      seconds += 59;
+    }
+    if (seconds > 0)
+    {
+      seconds --;
+    }
+    time = hours + ":" + minutes + ":" + seconds;
   }
-  if (hours > 0 && minutes == 0 && seconds == 0)
-  {
-    hours --;
-    minutes += 59;
-    seconds += 59;
-  }
-  if (seconds > 0)
-  {
-    seconds --;
-  }
-  time = hours + ":" + minutes + ":" + seconds;
-  
 }

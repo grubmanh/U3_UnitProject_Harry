@@ -59,6 +59,14 @@ void draw()
     textAlign(CENTER, CENTER);
     text("CORRECT", width/2, height/2);
   }
+  if (stage == "paused")
+  {
+    stageNum = 3;
+    fill(255);
+    textSize(100);
+    textAlign(CENTER, CENTER);
+    text("PAUSED", width/2, height/2);
+  }
   // c.write(); // to write
   if (c.available() > 0)
   {
@@ -75,6 +83,14 @@ void draw()
       if (data[3] == 8888 || data[3] == 8889)
       {
         stage = "correct";
+      }
+      if (data[3] == 3223)
+      {
+        stage = "paused";
+      }
+      if (data[3] == 4321)
+      {
+        stage = "initialize";
       }
     }
   }
