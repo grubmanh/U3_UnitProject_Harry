@@ -73,7 +73,9 @@ data[3] = code || force
 	4321 stop - stops game
 	3223 pause - pauses game
 	5555 tech - technical difficulty
-	8888 correct - forced correct
+	8888 correct - both rooms correct
+	8889 correct1 - room1 correct
+	8890 correct2 - room2 correct
 
 Materials List
 	Rooms [x2] - 

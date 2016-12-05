@@ -173,7 +173,13 @@ void consoleApp(int forceCode)
     executionName = "NULL";
     break;
   case 8888:
-    executionName = "Force Correct";
+    executionName = "Both Correct";
+    break;
+  case 8889:
+    executionName = "RM_1 Correct";
+    break;
+  case 8890:
+    executionName = "RM_2 Correct";
     break;
   case 9999: 
     executionName = "Reset All";

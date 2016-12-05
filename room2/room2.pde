@@ -72,7 +72,7 @@ void draw()
       {
         stage = "rooming";
       }
-      if (data[3] == 8888)
+      if (data[3] == 8888 || data[3] == 8890)
       {
         stage = "correct";
       }
