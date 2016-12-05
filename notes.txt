@@ -72,3 +72,13 @@ data[3] = code || force
 	4321 stop - stops game
 	3223 pause - pauses game
 	5555 tech - technical difficulty
+
+Materials List
+	Rooms [x2] - 
+	Raspberry Pi
+	Projector
+	HDMI Cable
+	Wireless USB Numpad
+
+	Controller -
+	Laptop (Harry’s)
