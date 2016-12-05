@@ -59,6 +59,7 @@ data[2] = stage
 	0 - initialization
 	1 - logo running
 	2 - rooming
+	3 - correct
 
 data[3] = code || force
 	Server = 0
@@ -72,6 +73,7 @@ data[3] = code || force
 	4321 stop - stops game
 	3223 pause - pauses game
 	5555 tech - technical difficulty
+	8888 correct - forced correct
 
 Materials List
 	Rooms [x2] - 

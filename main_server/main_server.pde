@@ -21,7 +21,7 @@ void draw()
     if(i != -1)
     {
       input = input.substring(0, i);
-      main_server.write(input);
+      main_server.write(input + '\n');
     }
     data = int(split(input, '|'));
     println(input);

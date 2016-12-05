@@ -18,6 +18,7 @@ void setup()
   size(1080, 600);
   c = new Client(this, "127.0.0.1", 12345);
   exo = loadImage("Exo_Logo.png");
+  c.write(identifier + "|" + status + "|" + stageNum + "\n");
 }
 
 void draw()
@@ -28,24 +29,35 @@ void draw()
     stageNum = 0;
     imageMode(CENTER);
     image(exo, width/2, height/2);
-    c.write(identifier + "|" + status + "|" + stageNum + "\n");
-    if (oneTime == false)
-    {
-      startTime = millis();
-      oneTime = true;
-    }
-    if ((millis() - startTime) > 100)
-    {
-      stage = "rooming";    
-    }
+    //if (oneTime == false)
+    //{
+    //  startTime = millis();
+    //  oneTime = true;
+    //}
+    //if ((millis() - startTime) > 100)
+    //{
+    //  stage = "rooming";    
+    //}
   }
   if (stage == "rooming")
   {
     stageNum = 1;
     fill(255);
     textSize(100);
+    textAlign(CENTER, CENTER);
     text(keypad, width/2, height/2);
-    c.write(identifier + "|" + status + "|" + stageNum + "|" + int(keypad) + "\n");
+    if (keypad.length() > 3)
+    {
+    c.write(identifier + "|" + status + "|" + stageNum + "|" + int(keypad)  + "\n");
+    }
+  }
+  if (stage == "correct")
+  {
+    stageNum = 3;
+    fill(255);
+    textSize(100);
+    textAlign(CENTER, CENTER);
+    text("CORRECT", width/2, height/2);
   }
   // c.write(); // to write
   if (c.available() > 0)
@@ -53,9 +65,17 @@ void draw()
     input = c.readString();
     input = input.substring(0, input.indexOf("\n"));
     data = int(split(input, '|'));
+    println(input);
     if (data[0] == 1)
     {
-      //if (data[2] == 0001
+      if (data[3] == 1234)
+      {
+        stage = "rooming";
+      }
+      if (data[3] == 8888)
+      {
+        stage = "correct";
+      }
     }
   }
 }
@@ -75,7 +95,7 @@ void keyPressed() // Adapted from Amnon.p5
     {
       keypad = "";
     }
-    else if (keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT && keypad.length() < 3)
+    else if (keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT && keypad.length() < 4)
     {
       int n = int(key);  // int('0') = 48 \\ Adapted from Quark
       n = n - 48;
@@ -83,4 +103,9 @@ void keyPressed() // Adapted from Amnon.p5
       keypad = keypad + key;
     }
   }
+}
+
+void exit()
+{
+  c.write(identifier + "|0|0\n");
 }
