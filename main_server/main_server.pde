@@ -28,3 +28,9 @@ void draw()
   }
   main_server.write("0|1|0\n"); // running code for server
 }
+
+void exit()
+{
+  for (int n = 0; n < 2; n++)
+  main_server.write("0|0|0\n");
+}

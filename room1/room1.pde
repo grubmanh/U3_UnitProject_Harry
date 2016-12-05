@@ -123,5 +123,6 @@ void keyPressed() // Adapted from Amnon.p5
 
 void exit()
 {
+  for (int n = 0; n < 2; n++)
   c.write(identifier + "|0|0\n");
 }
