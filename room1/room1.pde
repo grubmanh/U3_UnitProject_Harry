@@ -15,7 +15,7 @@ Boolean oneTime = false;
 void setup()
 {
   frameRate(5);
-  size(1080, 600);
+  fullScreen();
   c = new Client(this, "127.0.0.1", 12345);
   exo = loadImage("Exo_Logo.png");
   clue = loadImage("Keypad_Clue.jpg");
