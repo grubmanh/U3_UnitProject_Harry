@@ -59,6 +59,8 @@ void draw()
     {
     c.write(identifier + "|" + status + "|" + stageNum + "|" + int(keypad)  + "\n");
     }
+    if (int(keypad) == 2847)
+    stage = "correct";
   }
   if (stage == "correct")
   {
