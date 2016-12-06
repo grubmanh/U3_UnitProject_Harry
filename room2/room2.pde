@@ -6,7 +6,7 @@ int data[];
 int startTime;
 String stage = "initialize";
 int stageNum = 0;
-PImage exo;
+PImage exo, portrait, clue, converter, maze;
 String keypad = "989";
 int identifier = 3;
 int status = 1;
@@ -18,6 +18,10 @@ void setup()
   size(1080, 600);
   c = new Client(this, "127.0.0.1", 12345);
   exo = loadImage("Exo_Logo.png");
+  portrait = loadImage("Couple_Portrait.jpg");
+  clue = loadImage("Keypad_Clue.jpg");
+  converter = loadImage("Number_Letter_Converter.jpg");
+  maze = loadImage("Number_Maze.jpg");
   c.write(identifier + "|" + status + "|" + stageNum + "\n");
 }
 
@@ -43,9 +47,14 @@ void draw()
   {
     stageNum = 1;
     fill(255);
-    textSize(100);
+    textSize(40);
     textAlign(CENTER, CENTER);
-    text(keypad, width/2, height/2);
+    text(keypad, width/2, height-100);
+    imageMode(CENTER);
+    image(clue, width/2, height-150, 150, 50);
+    image(portrait, width/4, height/3, 200, 300);
+    image(maze, width/2, height/3, 250, 250);
+    image(converter, 3*width/4, height/3, 200, 300); 
     if (keypad.length() > 3)
     {
     c.write(identifier + "|" + status + "|" + stageNum + "|" + int(keypad)  + "\n");

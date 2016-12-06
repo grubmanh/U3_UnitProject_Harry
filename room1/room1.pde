@@ -6,7 +6,7 @@ int data[];
 int startTime;
 String stage = "initialize";
 int stageNum = 0;
-PImage exo;
+PImage exo, clue, letter, flow, inspiration;
 String keypad = "989";
 int identifier = 2;
 int status = 1;
@@ -18,6 +18,10 @@ void setup()
   size(1080, 600);
   c = new Client(this, "127.0.0.1", 12345);
   exo = loadImage("Exo_Logo.png");
+  clue = loadImage("Keypad_Clue.jpg");
+  letter = loadImage("Letter_from_VG.jpg");
+  flow = loadImage("Number_Flow_Chart.jpg");
+  inspiration = loadImage("Washington_Inspirational.jpg");
   c.write(identifier + "|" + status + "|" + stageNum + "\n");
 }
 
@@ -43,9 +47,14 @@ void draw()
   {
     stageNum = 1;
     fill(255);
-    textSize(100);
+    textSize(40);
     textAlign(CENTER, CENTER);
-    text(keypad, width/2, height/2);
+    text(keypad, width/2, height-100);
+    imageMode(CENTER);
+    image(clue, width/2, height-150, 150, 50);
+    image(letter, width/4, height/3, 200, 300);
+    image(flow, width/2, height/3, 250, 250);
+    image(inspiration, 3*width/4, height/3, 200, 300);
     if (keypad.length() > 3)
     {
     c.write(identifier + "|" + status + "|" + stageNum + "|" + int(keypad)  + "\n");
