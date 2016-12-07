@@ -16,7 +16,7 @@ void setup()
 {
   frameRate(5);
   fullScreen();
-  c = new Client(this, "127.0.0.1", 12345);
+  c = new Client(this, "139.59.1.39", 12345);
   exo = loadImage("Exo_Logo.png");
   portrait = loadImage("Couple_Portrait.jpg");
   clue = loadImage("Keypad_Clue.jpg");

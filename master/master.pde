@@ -24,7 +24,7 @@ Boolean timerPaused = false;
 void setup()
 {
   frameRate(5);
-  c = new Client(this, "127.0.0.1", 12345);
+  c = new Client(this, "139.59.1.39", 12345);
   exo = loadImage("Exo_Logo.png");
   masterStatus = "CONNECTED";
   size(1280, 690);
@@ -66,6 +66,7 @@ void draw()
     data = int(split(input, '|'));
     if (data[0] == 0) // script from server
     {
+      if (i > 1)
       if (data[1] == 1) // server is available
       serverStatus = "CONNECTED";
       if (data[1] == 0) // server is unavailable
