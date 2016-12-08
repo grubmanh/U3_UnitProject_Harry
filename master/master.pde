@@ -11,6 +11,7 @@ String room1Status = "NO CONN.";
 String room2Status = "NO CONN.";
 int rm1_code = 1234;
 int rm2_code = 1234;
+int cor_code = 2847;
 int forceCode = 0000;
 String executionName = "";
 int startTime;
@@ -137,8 +138,15 @@ void masterLayout()
   text(time, 10*width/12, 60);
   text(executionName, 7*width/8, height-100);
   textSize(100);
+  fill(255);
+  if (rm1_code == cor_code)
+  fill(#00ff00);
   text(rm1_code, 3*width/16, height-93);
+  fill(255);
+  if (rm2_code == cor_code)
+  fill(#00ff00);
   text(rm2_code, 9*width/16, height-93);
+  fill(255);
 }
 void keyPressed() // Adapted from Amnon.p5
 {
