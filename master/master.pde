@@ -43,8 +43,6 @@ void draw()
   {
     timer();
   }
-  println(millis());
-  println(forceCode);
   if (forceCode != 0000)
   {
     consoleApp(forceCode);
@@ -60,11 +58,9 @@ void draw()
   {
     input = c.readString();
     int i = input.indexOf('\n');
-    println(i);
     if (i != -1)
     {
       input = input.substring(0, i);
-      println(input);
     }
     data = int(split(input, '|')); // splits string into an array
     if (data[0] == 0) // script from server
@@ -176,8 +172,6 @@ void keyPressed() // Adapted from Amnon.p5
 
 void consoleApp(int forceCode)
 {
-  println("ConsoleApp called");
-  println("forceCode: " + forceCode);
   c.write("1|1|0|" + forceCode + "\n");
   switch(forceCode) 
   {

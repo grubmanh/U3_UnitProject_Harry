@@ -11,7 +11,7 @@ int startTime;
 String stage = "initialize";
 int stageNum = 0;
 PImage exo, clue, letter, flow, inspiration;
-String keypad = "989";
+String keypad = "CODE";
 int identifier = 2;
 int status = 1;
 Boolean oneTime = false;
@@ -47,9 +47,9 @@ void draw()
     text(keypad, width/2, height-100);
     imageMode(CENTER);
     image(clue, width/2, height-150, 150, 50);
-    image(letter, width/4, height/3, 200, 300);
-    image(flow, width/2, height/3, 250, 250);
-    image(inspiration, 3*width/4, height/3, 200, 300);
+    image(letter, 2.5*width/12, 3.5*height/7, width/4, 5*height/7);
+    image(flow, width/2, 2.5*height/7, width/4, 3*height/7);
+    image(inspiration, 9.5*width/12, 3.5*height/7, width/4, 5*height/7);
     if (keypad.length() > 3)
     {
       c.write(identifier + "|" + status + "|" + stageNum + "|" + int(keypad)  + "\n");
@@ -78,7 +78,6 @@ void draw()
     input = c.readString();
     input = input.substring(0, input.indexOf("\n"));
     data = int(split(input, '|'));
-    println(input);
     if (data[0] == 1)
     {
       switch(data[3])
