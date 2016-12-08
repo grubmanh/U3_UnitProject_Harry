@@ -1,3 +1,6 @@
+/*    Harry Grubman's EXO Room Escape
+      Server Send and Receive Code
+*/    
 import processing.net.*;
 
 Server main_server;
@@ -21,7 +24,7 @@ void draw()
     if(i != -1)
     {
       input = input.substring(0, i);
-      main_server.write(input + '\n');
+      main_server.write(input + '\n'); // echos reception to other nodes
     }
     data = int(split(input, '|'));
     println(input);

@@ -69,6 +69,7 @@ data[3] = code || force
 	Force Codes
 	0000 blank - force code not entered
 	9999 reset - reset all
+	1111 instructions - displays game instructions
 	1234 start - start game
 	4321 stop - stops game
 	3223 pause - pauses game

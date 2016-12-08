@@ -1,3 +1,6 @@
+/*    Harry Grubman's EXO Room Escape
+      Master Control Panel
+*/    
 import processing.net.*;
 PImage exo;
 
@@ -38,56 +41,55 @@ void draw()
   masterLayout();
   if (millis() % 10000 == 0);
   {
-  timer();
+    timer();
   }
   println(millis());
   println(forceCode);
   if (forceCode != 0000)
   {
-  consoleApp(forceCode);
-  forceCode = 0000;
+    consoleApp(forceCode);
+    forceCode = 0000;
   }
   if (executionName != "")
   {
     int ts = millis();
     if (millis() > (ts + 6000))
-    executionName = "";
+      executionName = "";
   }
-   //c.write(); // to write
   if (c.available() > 0)
   {
     input = c.readString();
     int i = input.indexOf('\n');
     println(i);
-    if(i != -1)
+    if (i != -1)
     {
       input = input.substring(0, i);
       println(input);
     }
-    data = int(split(input, '|'));
+    data = int(split(input, '|')); // splits string into an array
     if (data[0] == 0) // script from server
     {
       if (i > 1)
-      if (data[1] == 1) // server is available
-      serverStatus = "CONNECTED";
+        if (data[1] == 1) // server is available
+          serverStatus = "CONNECTED";
       if (data[1] == 0) // server is unavailable
-      serverStatus = "NO CONN.";
+        serverStatus = "NO CONN.";
     }
     if (data[0] == 2) // script from room1
     {
       if (data[1] == 1) // room1 is available
-      room1Status = "CONNECTED";
+        room1Status = "CONNECTED";
       if (data[1] == 0) // room1 is unavailable
-      room1Status = "NO CONN.";
+        room1Status = "NO CONN.";
       if (data[2] == 1) // room is rooming
         rm1_code = data[3];
     }
     if (data[0] == 3) // script from room2
     {
       if (data[1] == 1) // room2 is available
-      room2Status = "CONNECTED";
+        room2Status = "CONNECTED";
       if (data[1] == 0) // room2 is unavailable
-      room2Status = "NO CONN.";
+        room2Status = "NO CONN.";
       if (data[2] == 1) // room is rooming
         rm2_code = data[3];
     }
@@ -140,11 +142,11 @@ void masterLayout()
   textSize(100);
   fill(255);
   if (rm1_code == cor_code)
-  fill(#00ff00);
+    fill(#00ff00);
   text(rm1_code, 3*width/16, height-93);
   fill(255);
   if (rm2_code == cor_code)
-  fill(#00ff00);
+    fill(#00ff00);
   text(rm2_code, 9*width/16, height-93);
   fill(255);
 }
@@ -161,11 +163,11 @@ void keyPressed() // Adapted from Amnon.p5
     {
       console = console.substring(0, console.length()-1);
     }
-  }
+  } 
   else if (keyCode == DELETE)
   {
     console = "";
-  }
+  } 
   else if (keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT && console.length() < 5)
   {
     console = console + key;
@@ -193,6 +195,9 @@ void consoleApp(int forceCode)
     break;
   case 9999: 
     executionName = "Reset All";
+    break;
+  case 1111:
+    executionName = "Instructions";
     break;
   case 1234: 
     executionName = "Start Game";

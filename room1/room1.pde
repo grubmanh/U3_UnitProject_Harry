@@ -1,3 +1,7 @@
+/*    
+ Harry Grubman's EXO Room Escape
+ Room 1 Display & Keypad Code
+ */
 import processing.net.*;
 
 Client c;
@@ -33,15 +37,6 @@ void draw()
     stageNum = 0;
     imageMode(CENTER);
     image(exo, width/2, height/2);
-    //if (oneTime == false)
-    //{
-    //  startTime = millis();
-    //  oneTime = true;
-    //}
-    //if ((millis() - startTime) > 100)
-    //{
-    //  stage = "rooming";    
-    //}
   }
   if (stage == "rooming")
   {
@@ -57,10 +52,10 @@ void draw()
     image(inspiration, 3*width/4, height/3, 200, 300);
     if (keypad.length() > 3)
     {
-    c.write(identifier + "|" + status + "|" + stageNum + "|" + int(keypad)  + "\n");
+      c.write(identifier + "|" + status + "|" + stageNum + "|" + int(keypad)  + "\n");
     }
     if (int(keypad) == 2847)
-    stage = "correct";
+      stage = "correct";
   }
   if (stage == "correct")
   {
@@ -78,7 +73,6 @@ void draw()
     textAlign(CENTER, CENTER);
     text("PAUSED", width/2, height/2);
   }
-  // c.write(); // to write
   if (c.available() > 0)
   {
     input = c.readString();
@@ -87,21 +81,23 @@ void draw()
     println(input);
     if (data[0] == 1)
     {
-      if (data[3] == 1234)
+      switch(data[3])
       {
+      case 1234:
         stage = "rooming";
-      }
-      if (data[3] == 8888 || data[3] == 8889)
-      {
+        break;
+      case 8888:
         stage = "correct";
-      }
-      if (data[3] == 3223)
-      {
+        break;
+      case 8889:
+        stage = "correct";
+        break;
+      case 3223:
         stage = "paused";
-      }
-      if (data[3] == 4321)
-      {
+        break;
+      case 4321:
         stage = "initialize";
+        break;
       }
     }
   }
@@ -117,17 +113,17 @@ void keyPressed() // Adapted from Amnon.p5
       {
         keypad = keypad.substring(0, keypad.length()-1);
       }
-    }
+    } 
     else if (keyCode == DELETE)
     {
       keypad = "";
-    }
+    } 
     else if (keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT && keypad.length() < 4)
     {
       int n = int(key);  // int('0') = 48 \\ Adapted from Quark
       n = n - 48;
-      if(n >= 0 && n <= 9)
-      keypad = keypad + key;
+      if (n >= 0 && n <= 9)
+        keypad = keypad + key;
     }
   }
 }
@@ -135,5 +131,5 @@ void keyPressed() // Adapted from Amnon.p5
 void exit()
 {
   for (int n = 0; n < 2; n++)
-  c.write(identifier + "|0|0\n");
+    c.write(identifier + "|0|0\n"); // sends close connection code
 }
