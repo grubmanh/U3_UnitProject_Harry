@@ -60,6 +60,7 @@ data[2] = stage
 	1 - logo running
 	2 - rooming
 	3 - correct
+	4 - instruction
 
 data[3] = code || force
 	Server = 0

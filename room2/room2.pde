@@ -10,7 +10,7 @@ int data[];
 int startTime;
 String stage = "initialize";
 int stageNum = 0;
-PImage exo, portrait, clue, converter, maze;
+PImage exo, portrait, clue, converter, maze, instructions;
 String keypad = "CODE";
 int identifier = 3;
 int status = 1;
@@ -21,6 +21,7 @@ void setup()
   frameRate(5);
   fullScreen();
   c = new Client(this, "139.59.1.39", 12345);
+  instructions = loadImage("Instruction_Screen.jpg");
   exo = loadImage("Exo_Logo.png");
   portrait = loadImage("Couple_Portrait.jpg");
   clue = loadImage("Keypad_Clue.jpg");
@@ -37,6 +38,12 @@ void draw()
     stageNum = 0;
     imageMode(CENTER);
     image(exo, width/2, height/2);
+  }
+  if (stage == "instructions")
+  {
+    stageNum = 4;
+    imageMode(CENTER);
+    image(instructions, width/2, height/2, width, height);
   }
   if (stage == "rooming")
   {
@@ -84,6 +91,9 @@ void draw()
       {
       case 1234:
         stage = "rooming";
+        break;
+      case 1111:
+        stage = "instructions";
         break;
       case 8888:
         stage = "correct";
