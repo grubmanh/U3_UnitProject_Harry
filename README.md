@@ -1,5 +1,7 @@
 <h1>Unit 3 Final Project: EXO</h1>
+
 <strong>UPDATE</strong>: Server has been disabled, please contact grubmanh for demonstration.
+
 <strong>Interaction</strong>: Members of the game, once they are in the room, will interact with a mini numpad on a podium placed somewhere in the room. They will be watching a screen projected onto at least one of the walls. They will be talking to their team-mate through a microphone, and listening to their team-mate through a speaker.
 
 <strong>Description</strong>: In this game, there are two different rooms which are controlled by an overlord, and everything talks to the server. The rooms are each setup with a keyboard, so they can enter a code. They also have microphones and speakers, setup connected to a separate interface which allows the members of the rooms to talk to eachother. The overlord can hear the conversation. The overlord is another person in a different room who is controlling the experience. Eventually they have to figure out a code that is hidden somewhere in the projection, and they both have to enter it. Once they finish, they can escape the room. When they are done, they can try another experience. 
