@@ -28,7 +28,7 @@ Boolean timerPaused = false;
 void setup()
 {
   frameRate(5);
-  c = new Client(this, "139.59.1.39", 12345);
+  c = new Client(this, "139.59.8.116", 12345);
   exo = loadImage("Exo_Logo.png");
   masterStatus = "CONNECTED";
   size(1280, 690);
